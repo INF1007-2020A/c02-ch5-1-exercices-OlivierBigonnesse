@@ -22,7 +22,7 @@ def get_bill(name, data):
 
     # Retourner la facture formatée (sous-total, taxes, total)
     result = name
-    result += "\n" + f"SOUS-TOTAL {sum : >10.2f} $"
+    result += "\n" + f"SOUS TOTAL {sum : >10.2f} $"
     result += "\n" + f"TAXES      {taxes : >10.2f} $"
     result += "\n" + f"TOTAL      {total : >10.2f} $"
 
@@ -35,7 +35,8 @@ def format_number(number, num_decimal_digits):
     whole_part = int(abs(number))
 
     # Formater la partie décimale
-    decimal_part = "." + str(int(round(decimal_part * 10 ** num_decimal_digits)))
+    decimal_part = str(int(round(decimal_part * 10 ** num_decimal_digits)))
+    decimal_part = "." + "0" * (num_decimal_digits - len(decimal_part)) + decimal_part
     # Approche plus automagique : decimal_str = f"{decimal_part :.{num_decimal_digits}f}"[1:]
 
     # Formater la partie entière
